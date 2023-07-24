@@ -9,7 +9,16 @@ const professores = [
 
 // localhost:3000/professores
 app.get('/professores', (requisicao, resposta) => {
-    resposta.send(professores);
+    const { stack } = requisicao.query;
+    let resultado = professores;
+
+    if (stack) {
+        resultado = professores.filter((professor) => {
+            return professor.stack === stack;
+        });
+    };
+
+    resposta.send(resultado);
 });
 // localhost:3000/professores/1
 app.get('/professores/:id', (requisicao, resposta) => {
