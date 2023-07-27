@@ -4,6 +4,9 @@ const filtrarProfessores = (requisicao, resposta) => {
     const { stack } = requisicao.query;
     let resultado = professores;
 
+
+    console.log("cheguei no controlador de listagem do professor");
+
     if (stack) {
         resultado = professores.filter((professor) => {
             return professor.stack === stack;
@@ -14,6 +17,7 @@ const filtrarProfessores = (requisicao, resposta) => {
 };
 
 const encontrarUmProfessor = (requisicao, resposta) => {
+    console.log('rota para encontrar um professor');
     const professorEncontrado = professores.find((professor) => {
         return professor.id === Number(requisicao.params.id);
     });
